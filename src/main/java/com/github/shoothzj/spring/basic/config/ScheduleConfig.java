@@ -15,9 +15,12 @@ import java.util.concurrent.ScheduledThreadPoolExecutor;
 public class ScheduleConfig implements SchedulingConfigurer {
 
     @Override
-    public void configureTasks( ScheduledTaskRegistrar taskRegistrar) {
+    public void configureTasks(ScheduledTaskRegistrar taskRegistrar) {
         int threadNum = 3;
-        ScheduledThreadPoolExecutor executor = new ScheduledThreadPoolExecutor(threadNum, new DefaultThreadFactory("Schedule Pool"), new SimpleLogRejectHandler());
+        ScheduledThreadPoolExecutor executor =
+                new ScheduledThreadPoolExecutor(threadNum,
+                        new DefaultThreadFactory("Schedule Pool"),
+                        new SimpleLogRejectHandler());
         taskRegistrar.setScheduler(executor);
     }
 }
